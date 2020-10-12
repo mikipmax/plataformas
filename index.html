@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+
+	<meta charset="utf-8">
+	<title>Plataformas</title>
+	<link href='http://fonts.googleapis.com/css?family=Jura:400,600' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	
+	<div id="info" class="screen">
+
+		<p>Un juego de: <img src="imgs/logo_codigofacilito.png"></p>
+		<img src="imgs/personajeF.png" class="p">
+		<div class="datos">
+			<h1>Plataformas en el espacio  </h1>
+			<button class="btn start" id="otro">Iniciar </button>
+			<p>
+				<h3> Intrucciones</h3>
+				<p>Mover personaje con flechas</p>
+				<p>Saltar: flecha hacia arriba</p>
+				
+			</p>
+		</div>
+	</div>
+	<div id="win" class="screen">
+		<p>Un juego de: <img src="imgs/logo_codigofacilito.png"></p>
+		<img src="imgs/personajeF.png" class="p">
+		<div class="datos">
+			<h1>!Ganaste!</h1>
+			<button class="btn start" id="otro">Juega de nuevo</button>
+			<p>
+				<h3>Puntaje: </h3>
+				<p id="score"></p>
+			</p>
+		</div>
+	</div>
+	<div id="lose" class="screen">
+		<p>Un juego de: <img src="imgs/logo_codigofacilito.png"></p>
+		<img src="imgs/personajeF.png" class="p"> 
+		<div class="datos">
+			<h1>Perdiste</h1>
+			<p>Pero puedes iniciar de nuevo</p>
+			<button class="btn start" id="otro">Reintentar</button>
+			<p>
+				
+				<h3>Instrucciones</h3>
+				<p>Mover personaje con flechas</p>
+				<p>Saltar: flecha hacia arriba</p>
+				
+					
+				
+				
+
+			</p>
+		</div>
+	</div>
+
+<div id="game"></div>
+<script src="js/preloadjs-0.1.0.min.js"></script>
+<script src='js/kinetic-v5.1.0.min.js'></script>
+<script src="js/heroe.js"></script>
+<script src="js/plataforma.js"></script>
+<script src="js/moneda.js"></script>
+<script src="js/llave.js"></script>
+<script src="js/puerta.js"></script>
+<script src="js/game.js"></script>
+<script src="js/bloque.js"></script>
+<script src="js/bloque1.js"></script>
+<script src="js/bloque3.js"></script>
+<script src="js/bloqueM.js"></script>
+<script src="js/bloqueMcos.js"></script>
+<script src="js/bloqueP.js"></script>
+<script src="js/bala.js"></script>
+<script src="js/nube.js"></script>
+<script src="js/bloquePlataforma.js"></script>
+<script src="js/bloqueF.js"></script>
+<script src="js/bloqueAs.js"></script>
+<script src="js/bloquePD.js"></script>
+<script src="js/enemigo.js"></script>
+<script src="js/enemigo1.js"></script>
+<script src="js/enemigo2.js"></script>
+<script src="js/torreta.js"></script>
+<script src="js/vida.js"></script>
+
+<script src="js/naveEnemiga.js"></script>
+
+<script>
+
+ var imgsAssets=['imgs/Heroe.png',
+'imgs/enemy.png','ings/moneda.png', 'imgs/pattern.png', 'imgs/puerta.png',
+'imgs/llave.png','imgs/fondo.jpg','imgs/nebulosa.png','imgs/naveE.png', 'imgs/torreta.png',"imgs/fondo2.png","imgs/blAs.png","imgs/enemy2.png","imgs/patternro.png","imgs/corazon.png"];
+ window.addEventListener("load",function(){
+ Preloader=new PreloadJS();
+ Preloader.onProgress=progresoCarga;
+ cargar();
+ var iniciadores=document.getElementsByClassName("start");
+ for(i in iniciadores){
+ 	var boton=iniciadores[i];
+
+ 	boton.addEventListener("click",iniciarJuego);
+	}
+});
+function cargar(){
+	while(imgsAssets.length>0){
+		var url=imgsAssets.shift();
+		Preloader.loadFile(url);
+	}
+}
+function progresoCarga(){
+if(Preloader.progress==1){
+document.querySelector("#info").style.display="block";
+//nivelUno();
+}
+}
+function iniciarJuego(){
+	juego.nivel=1;
+	document.querySelector("#info").style.display="none";
+	document.querySelector("#lose").style.display="none";
+	document.querySelector("#win").style.display="none";
+	document.querySelector("#game").style.display="block";
+	setTimeout(nivelUno,1000);
+
+
+}
+
+</script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
